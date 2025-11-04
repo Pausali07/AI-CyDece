@@ -1,0 +1,26 @@
+
+services:
+  zeek:
+    image: zeek/zeek:latest
+    container_name: zeek
+    volumes:
+      - ./data:/data   # store PCAPs, logs, outputs
+    command: ["zeek", "-r", "/data/sample.pcap"]
+    networks:
+      - cybernet
+
+  tcpdump:
+    image: corfr/tcpdump
+    container_name: tcpdump
+    command: ["-i", "eth0", "-w", "/data/capture.pcap"]
+    volumes:
+      - ./data:/data
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      - cybernet
+
+networks:
+  cybernet:
+    driver: bridge
