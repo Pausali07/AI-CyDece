@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+# Minimal socket-based SSH-like honeypot (lab use only)
+import socket, threading, os, time, json
+from datetime import datetime
+
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("HP_PORT", 2222))
+LOG_DIR = os.environ.get("HP_LOG_DIR", "/var/honeypot/logs")
+BANNER = os.environ.get("HP_BANNER", "SSH-2.0-OpenSSH_7.4p1\r\n")
+
+os.makedirs(LOG_DIR, exist_ok=True)
+
+def ts(): return datetime.utcnow().isoformat()+"Z"
+
+def write_session(session):
+    path = os.path.join(LOG_DIR, f"{session['id']}.json")
+    try:
+        with open(path, "w") as f:
+            json.dump(session, f, indent=2)
+    except Exception as e:
+        print("Failed to write session:", e)
+
+def handle_client(conn, addr):
+    client_ip, client_port = addr[0], addr[1]
+    session_id = f"{client_ip.replace(':','_')}_{int(time.time())}"
+    session = {
+        "id": session_id,
+        "peer": client_ip,
+        "peer_port": client_port,
+        "start": ts(),
+        "events": [],
+        "creds": []   # list of {username, password, ts}
+    }
+
+    def record(direction, payload):
+        session["events"].append({"ts": ts(), "dir": direction, "data": payload})
+
+    try:
+        # banner
+        conn.sendall(BANNER.encode()); record("send", BANNER)
+
+        # ask for username
+        conn.sendall(b"login: "); record("send", "login: ")
+        username = ""
+        data = conn.recv(1024)
+        if not data:
+            username = ""
+        else:
+            username = data.decode('utf-8', errors='replace').strip()
+            record("recv", username + "\n")
+
+        # ask for password (fake - we do not implement real SSH)
+        conn.sendall(b"password: "); record("send", "password: ")
+        pwd_data = conn.recv(1024)
+        if not pwd_data:
+            password = ""
+        else:
+            password = pwd_data.decode('utf-8', errors='replace').strip()
+            # Do NOT echo passwords back; still record them in session cred field
+            record("recv", "<REDACTED_PASSWORD>\n")
+
+        # store credential attempt
+        session["creds"].append({
+            "ts": ts(),
+            "username": username,
+            "password": password
+        })
+
+        # send a fake shell prompt after login
+        conn.sendall(b"bash-5.0$ "); record("send", "bash-5.0$ ")
+
+        # now normal loop for further commands
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            text = data.decode('utf-8', errors='replace')
+            record("recv", text)
+
+            if any(k in text.lower() for k in ["exit", "quit", "logout"]):
+                conn.sendall(b"logout\r\n"); record("send", "logout"); break
+
+            resp = "bash-5.0$ "
+            try:
+                conn.sendall(resp.encode()); record("send", resp)
+            except Exception:
+                break
+
+    except Exception as e:
+        record("error", str(e))
+    finally:
+        session["end"] = ts()
+        write_session(session)
+        try: conn.close()
+        except: pass
+
+
+def main():
+    print(f"[+] Starting toy SSH honeypot on {HOST}:{PORT}")
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind((HOST, PORT))
+    sock.listen(50)
+    try:
+        while True:
+            conn, addr = sock.accept()
+            t = threading.Thread(target=handle_client, args=(conn, addr), daemon=True)
+            t.start()
+    except KeyboardInterrupt:
+        print("Shutting down honeypot")
+    finally:
+        sock.close()
+
+if __name__ == "__main__":
+    main()

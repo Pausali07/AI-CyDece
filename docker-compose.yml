@@ -1,26 +1,21 @@
-
 services:
-  zeek:
-    image: zeek/zeek:latest
-    container_name: zeek
+  ssh_honeypot:
+    build: ./honeypots/ssh_honeypot
+    container_name: ai-cydece-honeypot
+    ports:
+      - "2222:2222"
     volumes:
-      - ./data:/data   # store PCAPs, logs, outputs
-    command: ["zeek", "-r", "/data/sample.pcap"]
-    networks:
-      - cybernet
+      - ./data/honeypot_logs:/var/honeypot/logs
+      - ./data/pcaps:/var/honeypot/pcaps
+    restart: unless-stopped
 
   tcpdump:
-    image: corfr/tcpdump
-    container_name: tcpdump
-    command: ["-i", "eth0", "-w", "/data/capture.pcap"]
-    volumes:
-      - ./data:/data
+    image: corfr/tcpdump:latest
+    container_name: ai-cydece-tcpdump
+    command: ["-i", "any", "-w", "/pcaps/capture.pcap"]
     cap_add:
       - NET_ADMIN
       - NET_RAW
-    networks:
-      - cybernet
-
-networks:
-  cybernet:
-    driver: bridge
+    volumes:
+      - ./data/pcaps:/pcaps
+    restart: "no"
