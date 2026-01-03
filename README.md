@@ -9,3 +9,14 @@ This project aims to build an AI-driven deception environment that:
 
 ## Tech Stack
 Python 3.11+, Docker, Zeek, FastAPI, LLM API (OpenAI/local)
+
+### 📘 Documentation
+- [Project Scope](docs/project_scope.md)
+- [Architecture](docs/architecture.md)
+- [Ethical & Legal Considerations](docs/ethical_legal.md)
+
+## Known Issues
+
+⚠️ Zeek log persistence to host volumes may vary across environments.  
+Zeek execution and PCAP parsing were validated; log export is pending refinement.
+
