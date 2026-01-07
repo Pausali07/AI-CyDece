@@ -1,0 +1,6 @@
+FROM zeek/zeek:latest
+
+WORKDIR /pcaps
+VOLUME [ "/pcaps", "/zeek_logs" ]
+
+CMD [ "bash" ]

@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  zeek:
+    image: zeek/zeek:latest
+    container_name: zeek_container
+    volumes:
+      - ../data/pcaps:/pcaps
+      - ../data/zeek_logs:/zeek_logs
+    entrypoint: ["tail", "-f", "/dev/null"]

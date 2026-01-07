@@ -1,0 +1,57 @@
+{
+  "id": "172.23.0.1_1762343550",
+  "peer": "172.23.0.1",
+  "peer_port": 34108,
+  "start": "2025-11-05T11:52:30.506103Z",
+  "events": [
+    {
+      "ts": "2025-11-05T11:52:30.506262Z",
+      "dir": "send",
+      "data": "SSH-2.0-OpenSSH_7.4p1\r\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506298Z",
+      "dir": "send",
+      "data": "login: "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506314Z",
+      "dir": "recv",
+      "data": "SSH-2.0-OpenSSH_10.2p1 Debian-2\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506331Z",
+      "dir": "send",
+      "data": "password: "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508685Z",
+      "dir": "recv",
+      "data": "<REDACTED_PASSWORD>\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508770Z",
+      "dir": "send",
+      "data": "bash-5.0$ "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508783Z",
+      "dir": "recv",
+      "data": "penssh.com,aes128-ctr,aes192-ctr,aes256-ctr\u0000\u0000\u0000\ufffdumac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\u0000\u0000\u0000\ufffdumac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\u0000\u0000\u0000\u0015none,zlib@openssh.com\u0000\u0000\u0000\u0015none,zlib@openssh.com\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.510211Z",
+      "dir": "send",
+      "data": "bash-5.0$ "
+    }
+  ],
+  "creds": [
+    {
+      "ts": "2025-11-05T11:52:30.508707Z",
+      "username": "SSH-2.0-OpenSSH_10.2p1 Debian-2",
+      "password": "<REDACTED>",
+      "password_hash": "b7cfaf3197a30389262c9c980a80f8743de86a19cca0796f24a4ece77fd7e32e"
+    }
+  ],
+  "end": "2025-11-05T11:52:30.510238Z"
+}

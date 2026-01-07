@@ -1,0 +1,73 @@
+import os
+from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Load the API key from .env
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+if not openai_api_key:
+    raise ValueError("❌ OpenAI API key not found. Please set it in .env")
+
+# Initialize client
+client = OpenAI(api_key=openai_api_key)
+
+def analyze_with_llm(prompt: str) -> str:
+    """
+    Sends a prompt to the OpenAI model and returns the text response.
+    """
+prompt = f"""
+You are a senior Cyber Threat Intelligence (CTI) analyst.
+
+Analyze the following honeypot log data and provide a full cybersecurity report with these sections:
+
+### 1. Attack Summary
+A concise summary of what happened.
+
+### 2. Attacker Intent
+Explain the attacker's likely purpose:
+- Reconnaissance?
+- Enumeration?
+- Exploitation attempt?
+- Persistence attempt?
+- Credential access?
+- Malware delivery?
+
+### 3. Technique Breakdown
+Explain each action the attacker attempted.
+
+### 4. MITRE ATT&CK Mapping
+List relevant MITRE techniques using this format:
+- T1059 — Command Execution  
+- T1083 — File and Directory Discovery  
+- T1046 — Network Service Scanning  
+
+### 5. Severity Score (1–10)
+Rate how dangerous the activity is.
+
+### 6. Recommended Defense Actions
+Provide 5–8 practical security steps.
+
+---
+
+### Honeypot Log Data:
+
+{prompt}
+
+Provide a structured cybersecurity report in clean Markdown.
+"""
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",  # lightweight + fast
+            messages=[
+                {"role": "system", "content": "You are a cybersecurity analysis assistant."},
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.3,
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        return f"⚠️ LLM Analysis Error: {e}"

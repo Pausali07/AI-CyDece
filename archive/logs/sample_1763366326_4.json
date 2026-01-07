@@ -1,0 +1,19 @@
+{
+  "source_ip": "203.0.113.12",
+  "events": [
+    {
+      "ts": 1763366325.8029697,
+      "cmd": "root"
+    },
+    {
+      "ts": 1763366325.8029704,
+      "cmd": "password123"
+    }
+  ],
+  "creds": [
+    {
+      "username": "root",
+      "password": "password123"
+    }
+  ]
+}

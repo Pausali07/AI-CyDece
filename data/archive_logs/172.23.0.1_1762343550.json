@@ -1,0 +1,56 @@
+{
+  "id": "172.23.0.1_1762343550",
+  "peer": "172.23.0.1",
+  "peer_port": 34108,
+  "start": "2025-11-05T11:52:30.506103Z",
+  "events": [
+    {
+      "ts": "2025-11-05T11:52:30.506262Z",
+      "dir": "send",
+      "data": "SSH-2.0-OpenSSH_7.4p1\r\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506298Z",
+      "dir": "send",
+      "data": "login: "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506314Z",
+      "dir": "recv",
+      "data": "SSH-2.0-OpenSSH_10.2p1 Debian-2\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.506331Z",
+      "dir": "send",
+      "data": "password: "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508685Z",
+      "dir": "recv",
+      "data": "<REDACTED_PASSWORD>\n"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508770Z",
+      "dir": "send",
+      "data": "bash-5.0$ "
+    },
+    {
+      "ts": "2025-11-05T11:52:30.508783Z",
+      "dir": "recv",
+      "data": "penssh.com,aes128-ctr,aes192-ctr,aes256-ctr\u0000\u0000\u0000\ufffdumac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\u0000\u0000\u0000\ufffdumac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\u0000\u0000\u0000\u0015none,zlib@openssh.com\u0000\u0000\u0000\u0015none,zlib@openssh.com\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+    },
+    {
+      "ts": "2025-11-05T11:52:30.510211Z",
+      "dir": "send",
+      "data": "bash-5.0$ "
+    }
+  ],
+  "creds": [
+    {
+      "ts": "2025-11-05T11:52:30.508707Z",
+      "username": "SSH-2.0-OpenSSH_10.2p1 Debian-2",
+      "password": "\u0000\u0000\u0006\u001c\u0004\u0014g\ufffd`2U\u001b\ufffd\ufffd\ufffd\ufffd\ufffd6~F\ufffdm\u0000\u0000\u0001^mlkem768x25519-sha256,sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com\u0000\u0000\u0001\ufffdssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256\u0000\u0000\u0000lchacha20-poly1305@openssh.com,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr\u0000\u0000\u0000lchacha20-poly1305@openssh.com,aes128-gcm@openssh.com,aes256-gcm@o"
+    }
+  ],
+  "end": "2025-11-05T11:52:30.510238Z"
+}

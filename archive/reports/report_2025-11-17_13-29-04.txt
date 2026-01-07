@@ -1,0 +1,29 @@
+# Cybersecurity Report
+
+## 1. Attack Summary
+The honeypot log data indicates an attempted unauthorized access to a system using a common username and password combination. The attacker attempted to log in as the `root` user with the password `password123`. This suggests a brute-force or credential stuffing attack, where the attacker is trying known credentials to gain access to the system.
+
+## 2. Attacker Intent
+The primary intent of the attacker appears to be gaining unauthorized administrative access to the system. By targeting the `root` user, the attacker likely aims to exploit the highest level of privileges available, which would allow them to control the system fully, install malicious software, extract sensitive data, or use the system as a launchpad for further attacks.
+
+## 3. Technique Breakdown
+- **Credential Stuffing/Brute Force**: The attacker used a well-known username (`root`) and a common password (`password123`). This indicates a low-effort attack leveraging easily guessable credentials.
+- **Account Compromise**: The goal was to compromise the `root` account, which is often the target in many attacks due to its elevated privileges.
+
+## 4. MITRE ATT&CK Mapping
+- **T1078 - Valid Accounts**: The attacker attempted to use valid credentials to gain access to the system.
+- **T1110 - Brute Force**: The use of a common password suggests that the attacker may be employing brute force techniques to gain access.
+
+## 5. Severity Score (1–10)
+**Severity Score: 7/10**
+The severity score is relatively high due to the use of the `root` account, which poses significant risks if compromised. The use of a common password indicates a lack of security hygiene, which is a critical vulnerability.
+
+## 6. Recommended Defense Actions
+1. **Implement Strong Password Policies**: Enforce complex password requirements and educate users about the importance of unique passwords.
+2. **Enable Multi-Factor Authentication (MFA)**: Require MFA for all accounts, especially for administrative access, to add an additional layer of security.
+3. **Monitor and Alert on Failed Login Attempts**: Set up alerts for multiple failed login attempts to identify potential brute-force attacks early.
+4. **Limit Access to Administrative Accounts**: Restrict the use of the `root` account and encourage the use of least privilege principles.
+5. **Regularly Update and Patch Systems**: Ensure that all systems are up to date with the latest security patches to mitigate vulnerabilities.
+6. **Conduct Security Awareness Training**: Regularly train users on recognizing and responding to potential security threats, including phishing and credential theft.
+
+By implementing these defense actions, organizations can significantly reduce the risk of unauthorized access and enhance their overall security posture.

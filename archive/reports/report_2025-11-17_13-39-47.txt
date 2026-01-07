@@ -1,0 +1,31 @@
+# Cybersecurity Report
+
+## 1. Attack Summary
+The honeypot log data indicates an attempted unauthorized access to a system using the default administrative credentials. The attacker attempted to log in with the username "root" and the password "password123". This is a common attack vector where attackers exploit weak or default credentials to gain unauthorized access to systems.
+
+## 2. Attacker Intent
+The intent of the attacker appears to be to gain administrative control over the system. By attempting to log in as the root user, the attacker seeks to exploit the highest level of privileges available on the system, which would allow them to execute commands, access sensitive data, and potentially compromise the entire system.
+
+## 3. Technique Breakdown
+- **Credential Dumping**: The attacker is attempting to use known credentials to gain access to the system. The use of "root" and "password123" indicates a reliance on weak passwords.
+- **Brute Force Attack**: Although not explicitly shown in the logs, the use of a common username and password suggests that the attacker may be engaging in a brute force attack or using a list of default credentials.
+
+## 4. MITRE ATT&CK Mapping
+- **Initial Access**: 
+  - **T1078**: Valid Accounts - The attacker is attempting to use valid account credentials to gain access to the system.
+- **Credential Access**:
+  - **T1110**: Brute Force - The attacker may be using a brute force method to guess the password for the root account.
+
+## 5. Severity Score (1–10)
+**Severity Score: 7/10**
+The severity score is rated at 7 due to the use of default credentials, which poses a significant risk to the system. If successful, the attacker would have full administrative access, leading to potential data breaches and system compromise.
+
+## 6. Recommended Defense Actions
+1. **Enforce Strong Password Policies**: Implement policies that require strong, complex passwords that are difficult to guess. Avoid the use of default credentials.
+2. **Account Lockout Mechanisms**: Implement account lockout policies after a certain number of failed login attempts to mitigate brute force attacks.
+3. **Multi-Factor Authentication (MFA)**: Require MFA for all administrative accounts to add an additional layer of security.
+4. **Regular Monitoring and Logging**: Continuously monitor and analyze logs for suspicious activities and unauthorized access attempts. Use automated tools to alert on potential threats.
+5. **User Education and Awareness**: Conduct training sessions for users on the importance of password security and recognizing phishing attempts that could lead to credential theft.
+6. **Network Segmentation**: Limit access to critical systems and sensitive data by segmenting the network and implementing strict access controls.
+
+By taking these actions, organizations can significantly reduce the risk of unauthorized access and enhance their overall security posture.

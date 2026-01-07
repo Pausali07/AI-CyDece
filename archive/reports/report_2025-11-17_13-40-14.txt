@@ -1,0 +1,29 @@
+# Cybersecurity Report
+
+## 1. Attack Summary
+The honeypot log data indicates an attempted unauthorized access to a system using the root account. The attacker used the credentials "root" and "password123" to gain access. This suggests a brute-force or credential stuffing attack where common or default credentials were exploited.
+
+## 2. Attacker Intent
+The intent of the attacker appears to be to gain administrative access to the system. By targeting the root account, the attacker likely aims to exploit the system for malicious purposes such as data exfiltration, installation of malware, or further lateral movement within the network.
+
+## 3. Technique Breakdown
+- **Credential Access**: The attacker attempted to gain access using known credentials.
+- **Brute Force Attack**: The use of a common username and password combination indicates a brute-force attack strategy, where the attacker tries multiple combinations to gain access.
+
+## 4. MITRE ATT&CK Mapping
+- **T1078 - Valid Accounts**: The attacker used valid credentials (username: root, password: password123) to attempt access.
+- **T1110 - Brute Force**: The method of using a common password suggests a brute-force technique to gain access.
+
+## 5. Severity Score (1–10)
+**Severity Score: 7/10**
+The severity is rated at 7 due to the use of administrative credentials, which poses a significant risk if the attacker successfully gains access. The use of weak credentials also indicates a potential vulnerability in the system.
+
+## 6. Recommended Defense Actions
+1. **Implement Strong Password Policies**: Enforce the use of complex passwords and prohibit the use of common passwords like "password123".
+2. **Enable Multi-Factor Authentication (MFA)**: Require an additional authentication factor to enhance security beyond just username and password.
+3. **Monitor and Alert on Unauthorized Access Attempts**: Set up alerts for multiple failed login attempts and successful logins from unusual IP addresses.
+4. **Regularly Update and Patch Systems**: Ensure that all systems are up-to-date with the latest security patches to mitigate vulnerabilities.
+5. **Conduct Security Awareness Training**: Educate users about the importance of strong passwords and the risks associated with credential reuse.
+6. **Implement IP Whitelisting**: Restrict access to critical systems to known, trusted IP addresses to reduce the attack surface.
+
+By following these recommendations, the organization can significantly improve its security posture and reduce the likelihood of successful unauthorized access attempts.

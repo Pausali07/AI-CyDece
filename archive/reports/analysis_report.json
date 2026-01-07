@@ -1,0 +1,44 @@
+[
+  {
+    "session_id": "172.23.0.1_1762343629",
+    "peer": "172.23.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  },
+  {
+    "session_id": "172.20.0.1_1762341558",
+    "peer": "172.20.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  },
+  {
+    "session_id": "172.21.0.1_1762342659",
+    "peer": "172.21.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  },
+  {
+    "session_id": "172.20.0.1_1762341683",
+    "peer": "172.20.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  },
+  {
+    "session_id": "172.20.0.1_1762341658",
+    "peer": "172.20.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  },
+  {
+    "session_id": "172.23.0.1_1762343550",
+    "peer": "172.23.0.1",
+    "alerts": [
+      "No significant threat indicators"
+    ]
+  }
+]

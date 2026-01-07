@@ -1,0 +1,48 @@
+import json
+import os
+import glob
+from datetime import datetime
+from llm_wrapper import analyze_with_llm
+
+LOG_DIR = os.path.expanduser("~/AI-CyDece/data/honeypot_logs")
+REPORT_DIR = os.path.expanduser("~/AI-CyDece/data/reports")
+
+os.makedirs(REPORT_DIR, exist_ok=True)
+
+def get_latest_log():
+    logs = glob.glob(os.path.join(LOG_DIR, "*.json"))
+    if not logs:
+        return None
+    return max(logs, key=os.path.getctime)
+
+def save_timestamped_report(analysis_text):
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    report_path = os.path.join(REPORT_DIR, f"report_{timestamp}.txt")
+
+    with open(report_path, "w") as f:
+        f.write(analysis_text)
+
+    print(f"\n📄 Report saved to: {report_path}\n")
+
+def main():
+    latest_log = get_latest_log()
+    if not latest_log:
+        print("No logs found.")
+        return
+
+    print(f"Analyzing latest log: {latest_log}\n")
+
+    with open(latest_log, "r") as f:
+        log_data = f.read()
+
+    print("🧠 Sending data to LLM for analysis...\n")
+    analysis = analyze_with_llm(log_data)
+
+    print("\n═══ AI Analysis ═══\n")
+    print(analysis)
+
+    save_timestamped_report(analysis)
+
+
+if __name__ == "__main__":
+    main()

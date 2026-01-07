@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   ssh_honeypot:
     build: ./honeypots/ssh_honeypot
@@ -14,11 +12,18 @@ services:
   tcpdump:
     image: corfr/tcpdump:latest
     container_name: ai-cydece-tcpdump
-    network_mode: host
-    command: ["-i", "eth0", "-w", "/pcaps/capture_eth.pcap"]
+    command: ["-i", "any", "-w", "/pcaps/capture.pcap"]
     cap_add:
-      - NET_RAW
       - NET_ADMIN
+      - NET_RAW
     volumes:
       - ./data/pcaps:/pcaps
     restart: "no"
+
+  zeek:
+    image: zeek/zeek:latest
+    container_name: zeek_container
+    volumes:
+      - ./data/pcaps:/pcaps
+      - ./data/zeek_logs:/zeek_logs
+    command: ["tail", "-f", "/dev/null"]
