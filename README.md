@@ -30,6 +30,7 @@ It combines **rule-based risk classification** with **LLM-based reasoning** to p
 
 ## 📁 Project Structure
 
+```bash
 AI-CyDece/
 ├── analyzer/
 │   ├── session_summary.py
