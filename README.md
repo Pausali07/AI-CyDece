@@ -32,9 +32,18 @@ It combines **rule-based risk classification** with **LLM-based reasoning** to p
 
 AI-CyDece/
 ├── analyzer/
+│ ├── session_summary.py
+│ ├── llm_analysis.py
+│
 ├── collectors/
+│ ├── pcap_ingest.py
+│
 ├── api/
-├── data/pcaps/
+│ ├── main.py
+│
+├── data/
+│ └── pcaps/
+│
 ├── docker-compose.yml
 ├── ai_cydece.db
 
