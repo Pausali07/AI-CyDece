@@ -1,6 +1,7 @@
 # 🛡️ AI-CyDece: AI-Based Cyber Deception Framework
 
 ## 📌 Overview
+
 AI-CyDece is a cyber deception framework that uses a honeypot to capture attacker interactions and convert raw network data into structured cybersecurity intelligence.
 
 It combines **rule-based risk classification** with **LLM-based reasoning** to provide both detection and human-readable explanations of attacker behavior.
@@ -8,6 +9,7 @@ It combines **rule-based risk classification** with **LLM-based reasoning** to p
 ---
 
 ## 🎯 Objectives
+
 - Capture attacker activity using a honeypot  
 - Convert raw PCAP data into structured sessions  
 - Extract behavioral features  
@@ -17,6 +19,7 @@ It combines **rule-based risk classification** with **LLM-based reasoning** to p
 ---
 
 ## ⚙️ Technologies Used
+
 - Python  
 - Docker (Honeypot)  
 - SQLite  
@@ -26,6 +29,7 @@ It combines **rule-based risk classification** with **LLM-based reasoning** to p
 ---
 
 ## 📁 Project Structure
+
 AI-CyDece/
 ├── analyzer/
 ├── collectors/
@@ -34,55 +38,56 @@ AI-CyDece/
 ├── docker-compose.yml
 ├── ai_cydece.db
 
+---
+
 ## 🚀 How to Run
 
-### 1. Start Honeypot
-```bash
+Follow the steps below to execute the complete cyber deception pipeline from data collection to analysis and visualization:
+
+🔹 Step 1: Start the Honeypot Environment
+
+Initialize the honeypot and packet capture services using Docker. This will simulate a vulnerable system to capture attacker interactions.
+
 docker-compose up -d
 
-### 2. Ingest PCAP Data
-'''bash
+🔹 Step 2: Ingest PCAP Data
+
+Process the captured network traffic (PCAP files) and store session-level metadata in the database.
+
 python3 collectors/pcap_ingest.py
 
-### 3. Run Analysis (Rule + LLM)
-'''bash
+🔹 Step 3: Perform Analysis (Rule-Based + LLM)
+
+Analyze the ingested sessions by extracting behavioral features, classifying risk levels using rule-based logic, and generating explanations using an LLM.
+
 python3 -m analyzer.session_summary
 
-### 4. Start API
-'''bash
+🔹 Step 4: Start the API Server
+
+Launch the FastAPI server to expose the processed data and analysis results through REST endpoints.
+
 uvicorn api.main:app --reload
-Open in browser:
+
+🔹 Step 5: Access the API Interface
+
+Open the interactive Swagger UI in your browser to view and test the available endpoints.
+
 http://127.0.0.1:8000/docs
 
-## Sample Output
+---
 
-'''1 | Low | Rule: Automated interaction detected | LLM: Indicates scanning behavior
-2 | Medium | Rule: HTTP interaction detected | LLM: Suggests probing activity
+## 🔮 Future Scope
 
-## Key Features
+This project can be further enhanced in multiple directions:
 
-'''- Session-based attacker behavior analysis  
-- Rule-based risk classification  
-- LLM-based explanation generation  
-- Structured data storage (SQLite)  
-- API-based result access (FastAPI)
+-Extend support to multi-protocol honeypots such as HTTP, FTP, and IoT-based systems
+-Integrate more advanced LLM models for deeper behavioral and intent analysis
+-Develop a real-time monitoring dashboard for live attack visualization
+-Deploy the system in cloud environments for scalability and accessibility
+-Integrate with SIEM platforms for enterprise-level security monitoring
 
-## Role of LLM
+---
 
-'''The LLM enhances the system by:
-- Providing human-readable explanations  
-- Interpreting attacker behavior patterns  
-- Improving understanding of raw security data  
-- Supporting explainable cybersecurity analysis  
+## 📌 Conclusion
 
-## Future Scope
-
-'''- Multi-protocol honeypots (HTTP, FTP)  
-- Advanced LLM-based threat reasoning  
-- Real-time monitoring dashboard  
-- Cloud deployment  
-- Integration with SIEM tools  
-
-## Conclusion
-
-'''This project demonstrates how cyber deception combined with AI and LLMs can transform raw attacker interaction data into structured and interpretable cybersecurity insights.
+This project demonstrates how cyber deception, when combined with artificial intelligence and large language models, can transform raw attacker interaction data into structured, interpretable, and actionable cybersecurity insights. By combining rule-based detection with LLM-driven reasoning, the system enhances both analytical accuracy and explainability, making it highly relevant for modern security analysis and research.
