@@ -4,3 +4,5 @@ __pycache__/
 data/pcaps/
 *.log
 .env
+*.save
+*.save.*
